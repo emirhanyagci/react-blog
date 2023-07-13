@@ -13,3 +13,4 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 
 // TODO: ADD SEARCH FUNCTIONOLITY
 // TODO: ADD DELETE BUTTON FOR AN ITEM
+// TODO: CATCH ERRORS
