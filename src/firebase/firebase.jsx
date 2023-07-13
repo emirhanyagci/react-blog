@@ -1,10 +1,17 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore, addDoc, getDocs, collection } from "firebase/firestore";
+import {
+  doc,
+  getFirestore,
+  addDoc,
+  getDocs,
+  deleteDoc,
+  collection,
+} from "firebase/firestore";
 import firebaseConfig from "./firebaseConfig";
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-export const setBlog = async (title, content) => {
+export const setPost = async (title, content) => {
   try {
     const docRef = await addDoc(collection(db, "blogs"), {
       title,
@@ -16,12 +23,21 @@ export const setBlog = async (title, content) => {
     throw new Error(err);
   }
 };
-export const getBlogs = async () => {
+export const getPost = async () => {
   const blogsSnapshot = await getDocs(collection(db, "blogs"));
   const blogs = blogsSnapshot.docs.map((doc) => {
-    return doc.data();
+    return { value: doc.data(), id: doc.id };
   });
+
   return blogs;
+};
+
+export const deleteAllPost = async () => {
+  const blogsSnapshot = await getDocs(collection(db, "blogs"));
+  blogsSnapshot.docs.map(async (docs) => {
+    console.log(doc.id);
+    return await deleteDoc(doc(db, "blogs", docs.id));
+  });
 };
 
 export default db;

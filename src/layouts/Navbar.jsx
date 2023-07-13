@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom";
+import Button from "../components/Button";
+import { deleteAllPost } from "../firebase/firebase";
 function Navbar() {
   return (
     <nav className="p-5 border-b-2 border-orange-400 flex justify-between">
@@ -6,18 +8,21 @@ function Navbar() {
         {" "}
         🏠HOME
       </Link>
-      <div className="flex items-center space-x-3">
+      <div className="flex items-center space-x-5">
         <div>x blog post founded</div>
         <input
-          className="bg-transparent text-sm rounded-sm h-full px-2 border-orange-400 border-[1px]  outline-none "
+          className="bg-transparent text-sm rounded-sm h-full px-2 py-3 border-orange-400 border-[1px]  outline-none "
           type="text"
           placeholder="Search posts..."
           name=""
           id=""
         />
-        <button className="bg-orange-400 px-4 h-full rounded-md ">
+        <Button
+          onClickHandler={deleteAllPost}
+          className="bg-orange-400 px-4 h-full rounded-md hover:bg-orange-500 "
+        >
           Clear Posts
-        </button>
+        </Button>
       </div>
     </nav>
   );
