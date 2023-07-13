@@ -1,6 +1,7 @@
 import { initializeApp } from "firebase/app";
 import {
   doc,
+  onSnapshot,
   getFirestore,
   addDoc,
   getDocs,
@@ -39,5 +40,14 @@ export const deleteAllPost = async () => {
     return await deleteDoc(doc(db, "blogs", docs.id));
   });
 };
-
+export const onSnpatshotHandler = onSnapshot(
+  collection(db, "blogs"),
+  (posts) => {
+    let newPosts = [];
+    posts.docs.map((post) => {
+      newPosts.push(post.data());
+    });
+    return newPosts;
+  }
+);
 export default db;

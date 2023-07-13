@@ -1,5 +1,4 @@
 import PropTypes from "prop-types";
-
 function Card({ title, content }) {
   return (
     <div className="border-[1px] w-60 rounded-md space-y-3  items-stretch border-orange-400 inline-block p-5 hover:bg-orange-400/10">

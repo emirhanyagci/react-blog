@@ -1,9 +1,10 @@
 import { useState } from "react";
-import { setPost } from "../firebase/firebase";
 import Button from "./Button";
+import { usePosts } from "../context/blogsContext";
 function AddPost() {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
+  const { setPost } = usePosts();
   function addPost() {
     try {
       if (title !== "" && content !== "") setPost(title, content);

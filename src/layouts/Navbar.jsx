@@ -9,7 +9,7 @@ function Navbar() {
         🏠HOME
       </Link>
       <div className="flex items-center space-x-5">
-        <div>x blog post founded</div>
+        <div>0 blog post founded</div>
         <input
           className="bg-transparent text-sm rounded-sm h-full px-2 py-3 border-orange-400 border-[1px]  outline-none "
           type="text"
