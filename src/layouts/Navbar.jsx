@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 import Button from "../components/Button";
-import { deleteAllPost } from "../firebase/firebase";
+import { usePosts } from "../context/blogsContext";
 function Navbar() {
+  const { deleteAllPost } = usePosts();
   return (
     <nav className="p-5 border-b-2 border-orange-400 flex justify-between">
       <Link to="" className="font-bold tracking-widest text-xl">
