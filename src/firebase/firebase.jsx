@@ -23,4 +23,5 @@ export const getBlogs = async () => {
   });
   return blogs;
 };
+
 export default db;
