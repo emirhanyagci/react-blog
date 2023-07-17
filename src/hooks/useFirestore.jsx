@@ -26,10 +26,11 @@ function useFirebase() {
   const getPost = async () => {
     try {
       const blogsSnapshot = await getDocs(collection(db, "blogs"));
-      const postArr = blogsSnapshot.docs.map((doc) => {
-        return { value: doc.data(), id: doc.id };
+      const postArr = blogsSnapshot.docs.map((post) => {
+        return { payload: post.data(), id: post.id };
       });
       setPosts(postArr);
+
       return postArr;
     } catch (err) {
       throw new Error(err.messages);
@@ -52,7 +53,7 @@ function useFirebase() {
       onSnapshot(collection(db, "blogs"), (posts) => {
         let newPosts = [];
         posts.docs.map((post) => {
-          newPosts.push(post.data());
+          newPosts.push({ payload: post.data(), id: post.id });
         });
         setPosts(newPosts);
       });

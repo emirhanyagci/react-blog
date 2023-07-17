@@ -9,6 +9,7 @@ function Blogs() {
   const { getPost, posts } = usePostsContext();
   useEffect(() => {
     getPost().then(() => {
+      console.log(posts);
       setIsLoading(false);
     });
   }, []);
@@ -18,14 +19,14 @@ function Blogs() {
       <div className=" flex gap-5 flex-wrap items-start mt-10">
         {isLoading ? (
           <LoadingSpinner />
-        ) : posts.length == 0 ? (
+        ) : posts.length === 0 ? (
           <div className="text-2xl w-full text-center"> NO ITEM FOUND 🙁</div>
         ) : (
           posts.map((postData) => (
             <Card
               key={crypto.randomUUID()}
-              title={postData.title}
-              content={postData.content}
+              title={postData.payload.title}
+              content={postData.payload.content}
             />
           ))
         )}
