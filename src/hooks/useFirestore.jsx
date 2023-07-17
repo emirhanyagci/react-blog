@@ -41,14 +41,24 @@ function useFirebase() {
     try {
       const blogsSnapshot = await getDocs(collection(db, "blogs"));
       blogsSnapshot.docs.map(async (docs) => {
-        console.log(doc.id);
         return await deleteDoc(doc(db, "blogs", docs.id));
       });
     } catch (err) {
       throw new Error(err.messages);
     }
   };
+  const sortPosts = (query) => {
+    const newPosts = [...posts];
+
+    newPosts.sort((a, b) => {
+      return b.payload.title.includes(query) - a.payload.title.includes(query);
+    });
+    console.log(posts);
+    console.log(newPosts);
+    setPosts(newPosts);
+  };
   useEffect(() => {
+    console.log(123);
     try {
       onSnapshot(collection(db, "blogs"), (posts) => {
         let newPosts = [];
@@ -61,7 +71,8 @@ function useFirebase() {
       throw new Error(err.messages);
     }
   }, []);
-  return { setPost, getPost, deleteAllPost, posts };
+
+  return { setPost, getPost, sortPosts, deleteAllPost, posts };
 }
 
 export default useFirebase;

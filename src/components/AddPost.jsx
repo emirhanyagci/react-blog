@@ -7,7 +7,11 @@ function AddPost() {
   const { setPost } = usePostsContext();
   function addPost() {
     try {
-      if (title !== "" && content !== "") setPost(title, content);
+      if (title !== "" && content !== "") {
+        setPost(title, content);
+        setTitle("");
+        setContent("");
+      }
     } catch (error) {
       alert(error);
     }

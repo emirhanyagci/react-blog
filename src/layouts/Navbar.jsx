@@ -2,7 +2,8 @@ import { Link } from "react-router-dom";
 import Button from "../components/Button";
 import { usePostsContext } from "../context/PostsContext";
 function Navbar() {
-  const { deleteAllPost, posts } = usePostsContext();
+  const { deleteAllPost, posts, sortPosts } = usePostsContext();
+
   return (
     <nav className="p-5 border-b-2 border-orange-400 flex justify-between">
       <Link to="" className="font-bold tracking-widest text-xl">
@@ -12,6 +13,7 @@ function Navbar() {
       <div className="flex items-center space-x-5">
         <div>{posts.length} blog post founded</div>
         <input
+          onChange={(e) => sortPosts(e.target.value)}
           className="bg-transparent text-sm rounded-sm h-full px-2 py-3 border-orange-400 border-[1px]  outline-none "
           type="text"
           placeholder="Search posts..."

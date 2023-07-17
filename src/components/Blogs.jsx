@@ -9,10 +9,10 @@ function Blogs() {
   const { getPost, posts } = usePostsContext();
   useEffect(() => {
     getPost().then(() => {
-      console.log(posts);
       setIsLoading(false);
     });
   }, []);
+
   return (
     <div>
       <AddPost />
