@@ -5,10 +5,11 @@ import useFirestore from "../hooks/useFirestore";
 const PostsContext = createContext([]);
 
 export function PostsProvider({ children }) {
-  const { setPost, getPost, deleteAllPost, posts, sortPosts } = useFirestore();
+  const { setPost, getPost, deleteAllPost, deletePost, posts, sortPosts } =
+    useFirestore();
   return (
     <PostsContext.Provider
-      value={{ getPost, setPost, sortPosts, deleteAllPost, posts }}
+      value={{ getPost, setPost, sortPosts, deletePost, deleteAllPost, posts }}
     >
       {children}
     </PostsContext.Provider>

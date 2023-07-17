@@ -36,7 +36,13 @@ function useFirebase() {
       throw new Error(err.messages);
     }
   };
-
+  const deletePost = async (id) => {
+    try {
+      return await deleteDoc(doc(db, "blogs", id));
+    } catch (err) {
+      throw new Error(err);
+    }
+  };
   const deleteAllPost = async () => {
     try {
       const blogsSnapshot = await getDocs(collection(db, "blogs"));
@@ -47,6 +53,7 @@ function useFirebase() {
       throw new Error(err.messages);
     }
   };
+
   const sortPosts = (query) => {
     const newPosts = [...posts];
 
@@ -57,6 +64,7 @@ function useFirebase() {
     console.log(newPosts);
     setPosts(newPosts);
   };
+
   useEffect(() => {
     console.log(123);
     try {
@@ -72,7 +80,7 @@ function useFirebase() {
     }
   }, []);
 
-  return { setPost, getPost, sortPosts, deleteAllPost, posts };
+  return { setPost, getPost, sortPosts, deletePost, deleteAllPost, posts };
 }
 
 export default useFirebase;

@@ -24,9 +24,10 @@ function Blogs() {
         ) : (
           posts.map((postData) => (
             <Card
-              key={crypto.randomUUID()}
+              key={postData.id}
               title={postData.payload.title}
               content={postData.payload.content}
+              id={postData.id}
             />
           ))
         )}
