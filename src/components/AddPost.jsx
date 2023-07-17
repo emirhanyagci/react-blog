@@ -1,10 +1,10 @@
 import { useState } from "react";
 import Button from "./Button";
-import { usePosts } from "../context/PostsContext";
+import { usePostsContext } from "../context/PostsContext";
 function AddPost() {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  const { setPost } = usePosts();
+  const { setPost } = usePostsContext();
   function addPost() {
     try {
       if (title !== "" && content !== "") setPost(title, content);

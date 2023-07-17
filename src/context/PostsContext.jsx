@@ -1,6 +1,4 @@
 import PropTypes from "prop-types";
-
-import { createContext, useState, useContext, useEffect } from "react";
 import {
   doc,
   onSnapshot,
@@ -15,10 +13,11 @@ import firebaseConfig from "../firebase/firebaseConfig";
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+import { createContext, useState, useContext, useEffect } from "react";
 
 const PostsContext = createContext([]);
 
-export default function PostsProvider({ children }) {
+export function PostsProvider({ children }) {
   const [posts, setPosts] = useState("asd");
   const setPost = async (title, content) => {
     try {
@@ -66,12 +65,8 @@ export default function PostsProvider({ children }) {
 }
 
 PostsProvider.propTypes = {
-  children: PropTypes.node,
+  children: PropTypes.element,
   className: PropTypes.string,
   onClickHandler: PropTypes.func,
 };
-function usePosts() {
-  const context = useContext(PostsContext);
-  return context;
-}
-export { PostsProvider, usePosts };
+export const usePostsContext = () => useContext(PostsContext);

@@ -1,12 +1,12 @@
 import PropTypes from "prop-types"; // ES6
 import { useEffect, useState } from "react";
-import { usePosts } from "../context/PostsContext";
+import { usePostsContext } from "../context/PostsContext";
 import AddPost from "./AddPost";
 import LoadingSpinner from "./LoadingSpinner";
 import Card from "./Card";
 function Blogs() {
   const [isLoading, setIsLoading] = useState(true);
-  const { getPost, posts } = usePosts();
+  const { getPost, posts } = usePostsContext();
   useEffect(() => {
     getPost().then(() => {
       setIsLoading(false);

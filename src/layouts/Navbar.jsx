@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import Button from "../components/Button";
-import { usePosts } from "../context/PostsContext";
+import { usePostsContext } from "../context/PostsContext";
 function Navbar() {
-  const { deleteAllPost, posts } = usePosts();
+  const { deleteAllPost, posts } = usePostsContext();
   return (
     <nav className="p-5 border-b-2 border-orange-400 flex justify-between">
       <Link to="" className="font-bold tracking-widest text-xl">
