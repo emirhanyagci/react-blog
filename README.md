@@ -1,4 +1,4 @@
 # react-blog
-> catch error (add toast packet)
-> add search functionality
-> add clear as single post 
+> catch error (add toast packet) <br />
+> add search functionality <br />
+> add clear as single post <br />
