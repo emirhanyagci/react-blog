@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Button from "./Button";
-import { usePosts } from "../context/blogsContext";
+import { usePosts } from "../context/PostsContext";
 function AddPost() {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import Button from "../components/Button";
-import { usePosts } from "../context/blogsContext";
+import { usePosts } from "../context/PostsContext";
 function Navbar() {
   const { deleteAllPost, posts } = usePosts();
   return (

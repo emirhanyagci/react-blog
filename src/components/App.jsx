@@ -1,4 +1,4 @@
-import PostProvider from "../context/blogsContext";
+import { PostsProvider } from "../context/PostsContext";
 import { Route, Routes } from "react-router-dom";
 import Navbar from "../layouts/Navbar";
 import ModalContainer from "../layouts/ModalContainer";
@@ -7,7 +7,7 @@ import Blogs from "./Blogs";
 
 function App() {
   return (
-    <PostProvider>
+    <PostsProvider>
       <Navbar />
       <Routes>
         <Route element={<ModalContainer />}>
@@ -15,7 +15,7 @@ function App() {
           <Route path="blogs" element={<Blogs />}></Route>
         </Route>
       </Routes>
-    </PostProvider>
+    </PostsProvider>
   );
 }
 

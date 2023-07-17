@@ -16,9 +16,9 @@ import firebaseConfig from "../firebase/firebaseConfig";
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-const BlogContext = createContext([]);
+const PostsContext = createContext([]);
 
-export default function PostProvider({ children }) {
+export default function PostsProvider({ children }) {
   const [posts, setPosts] = useState("asd");
   const setPost = async (title, content) => {
     try {
@@ -29,7 +29,7 @@ export default function PostProvider({ children }) {
 
       return docRef;
     } catch (err) {
-      throw new Error(err);
+      throw new Error(err.messages);
     }
   };
   const getPost = async () => {
@@ -59,19 +59,19 @@ export default function PostProvider({ children }) {
   }, []);
 
   return (
-    <BlogContext.Provider value={{ getPost, setPost, deleteAllPost, posts }}>
+    <PostsContext.Provider value={{ getPost, setPost, deleteAllPost, posts }}>
       {children}
-    </BlogContext.Provider>
+    </PostsContext.Provider>
   );
 }
 
-PostProvider.propTypes = {
+PostsProvider.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
   onClickHandler: PropTypes.func,
 };
 function usePosts() {
-  const context = useContext(BlogContext);
+  const context = useContext(PostsContext);
   return context;
 }
-export { PostProvider, usePosts };
+export { PostsProvider, usePosts };
